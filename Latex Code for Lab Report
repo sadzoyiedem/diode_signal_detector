@@ -1,0 +1,109 @@
+\documentclass[30pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry} % to  Set the margins of the path
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{graphicx} % Required for inserting images
+\graphicspath{{images/}}
+\usepackage{float}
+\usepackage{lipsum} % for dummy text
+\usepackage{url}
+\usepackage{gensymb}
+\usepackage[none]{hyphenat}
+
+
+\title{\Huge{\textbf{The Diode as a Signal Detector}}}
+\author{\huge\textbf{{Stephen Edem Adzoyi - 4087524 \\ \\ \\ \Large{Department of Computer Engineering, KNUST}}}}
+\date{\Large{23rd July 2025}}
+
+\begin{document}
+\maketitle
+\Large{
+\begin{abstract}
+    This experiment explores the application of a diode in signal detection using a basic circuit comprising a 9V DC power supply, a resistor, and a diode connected in series. The objective was to observe the behavior of the diode in the detection of high-voltage signals. The circuit was designed and simulated to monitor the output using a microcontroller's digital input pin. When the voltage across the diode exceeded the threshold, the serial monitor output confirmed the detection by displaying a "High voltage detected" message. The results validate the diode's ability to act as a simple yet effective signal detector, allowing current flow only when the diode is forward biased. This experiment reinforces the role of the diode in practical electronics for voltage threshold recognition and protection circuits.
+\end{abstract}
+}
+\section*{1. Project Objective}
+In this project, a diode is used to detect high-voltage signals. 
+\section*{2. What is a Diode?}
+A diode is a semiconductor device that allows current to flow in only one direction. It has two terminals: the anode and the cathode. 
+\subsection*{How does the diode function?}
+When the anode is at a voltage higher than that of the cathode (forward bias), current flows through the diode. When reversed (reverse bias), the diode blocks the current. This unidirectional behavior is useful in rectification, protection circuits, and signal demodulation.
+\section*{3. Project Description and Procedure}
+The main aim of the experiment was to study the behavior of the diode. 
+\subsection*{\Large{Components Used}}
+\begin{itemize}
+    \item 9V Dc source
+    \item Resistor
+    \item ESP 32 Board
+    \item Breadboard
+    \item Jumper Wires
+    \item Diode (1N4001)
+    \item Push Button
+    \item Laptop for programming the circuit
+\end{itemize}
+\subsection*{\Large{Procedure}}
+\subsection*{Forward Voltage Drop}
+\begin{enumerate}
+    \item The circuit schematic was drawn in Proteus, including the diode, resistor, and voltage source.
+    \item The simulation was run to observe the voltage drop across the diode.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{forward&reversed biased.png}
+    \caption{Circuit Simulation in Proteus}
+    \label{fig:enter-label}
+\end{figure}
+\item Another simulation was done in Proteus to measure the forward voltage drop of a Light Emitting Diode (LED)
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{led forward voltage.png}
+    \caption{Simulation of measuring the forward voltage drop of a red LED}
+    \label{fig:enter-label}
+\end{figure}
+\end{enumerate}
+\subsection*{Signal Detection}
+\begin{enumerate}
+    \item The anode of the diode was connected to the resistor which was connected to one terminal of a push button source. 
+    \item The positive terminal of the 9V DC source was then connected to the corresponding terminal of the push button.
+    \item The anode of the diode was connected to GPIO pin 15 of the ESP32.
+    \item The cathode of the diode was connected to the GND pin of the ESP32.
+    \item A series of code where written in the Arduino IDE to display when the diode detected a high voltage signal on the serial monitor of the IDE. 
+\end{enumerate}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{code.png}
+    \caption{Arduino Code Uploaded to GitHub}
+    \label{fig:enter-label}
+\end{figure}
+\noindent{Repository Link:}
+\url{https://github.com/sadzoyiedem/diode_signal_detector} 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{WhatsApp Image 2025-07-23 at 09.52.13_ad640f2a.jpg}
+    \caption{Physical Connection}
+    \label{fig:enter-label}
+\end{figure}
+\section*{4. Observation and Results}
+\subsection*{Forward Voltage}
+\begin{itemize}
+    \item When the diode was connected in forward bias mode, the voltage displayed on the voltmeter was 0.71V. This voltage is the forward voltage or the voltage drop across the diode as the diode is conducting. 
+    \item A current of $8.29mA$ was seen to flow through the diode in the forward biased state. 
+    \item When the diode was connected in reversed bias mode, the voltage measured across it was equal to the voltage of the DC source, that is, 9V. This is because the diode acts as an open switch with no current flowing through the circuit, hence the voltage measure across this terminal equals 9V. 
+\end{itemize}
+\subsection*{Signal Detection}
+\begin{itemize}
+    \item Initially, the serial monitor displayed "No High Voltage Detected (Safe)". This is because the was not connected to the voltage source hence was an open switch and did not allow current to flow through it.  
+    \item When the push button was pushed down connecting the 9V DC to the diode, the serial monitor displayed ". 
+    This was because the diode was connected to the voltage source which is greater than its forward voltage. As a result the diode became a closed switch account current to flow through which was an indication that there was a high voltage signal being applied. 
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{image.png}
+    \caption{Serial Monitor Display}
+    \label{fig:enter-label}
+\end{figure}
+
+\section*{5. Conclusion}
+These experiment showcase the basic properties of the diode. That is the state of the diode when forward biased and when reversed biased. It also showcased the ability of the diode to be used as a signal detector which plays a key role in 21st century electronics. 
+\end{document}
